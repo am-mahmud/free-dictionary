@@ -31,7 +31,8 @@ function updateDateTime() {
     const formattedSeconds = seconds < 10 ? '0' + seconds : seconds;
 
     // Construct the display string
-    const dateTimeString = `${dayOfWeek} ${monthName} ${dayOfMonth}, ${year} ${hours}:${formattedMinutes}:${formattedSeconds} ${ampm}`;
+    //const dateTimeString = `${dayOfWeek} ${monthName} ${dayOfMonth}, ${year} ${hours}:${formattedMinutes}:${formattedSeconds} ${ampm}`;
+    const dateTimeString = `${dayOfWeek} ${monthName} ${dayOfMonth}, ${year}`;
 
     // Update the HTML element
     document.getElementById('datetime').textContent = dateTimeString;
