@@ -37,15 +37,6 @@ function updateDateTime() {
     document.getElementById('datetime').textContent = dateTimeString;
 }
 
-// Dictionary API
-const loadDictionary = async (word) => {
-  const response =  await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
-  const data = await response.json()
-//   console.log(data);
-  getWordInfo(data[0])
-} 
- 
-
 // Word search form 
 const form = document.querySelector('form');
 form.addEventListener('submit', (e) => {
@@ -53,15 +44,37 @@ form.addEventListener('submit', (e) => {
     console.log('submit clicked');
     const searchInput = document.getElementById("default-search");
     const inputValue = searchInput.value;
-    loadDictionary(inputValue)
-    
+
+    // if(inputValue){
+    //     loadDictionary(inputValue)
+    // }
+
+    loadDictionary(inputValue);
+
 })
 
+// Dictionary API
+const loadDictionary = async (word) => {
+  const response =  await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
+  const data = await response.json()
+//   console.log(data);
+//   getWordInfo(data[0])
+
+  if (Array.isArray(data)) {
+    getWordInfo(data[0]);
+  } else {
+    const wordDetail = document.getElementById("word-details");
+    wordDetail.innerHTML = `
+     Oops! Word not found
+    `;
+  }
+} 
+ 
 
 // Word Display
 const getWordInfo = (wordData) => {
     console.log(wordData.word); 
-    
+
     const wordDetail = document.getElementById("word-details");
     const wordContainer = document.getElementById("word-container");
 
@@ -75,9 +88,7 @@ const getWordInfo = (wordData) => {
     `;
     wordContainer.appendChild(wordDetail);
 }
-
-
-  
+ 
 
 // Call the function once to display immediately
 updateDateTime();
