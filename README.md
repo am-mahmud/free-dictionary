@@ -36,6 +36,10 @@ A simple, elegant, and fast online dictionary web app built with HTML, CSS, Java
 |---------| ---------|
 | DictionaryAPI.dev	| Fetch definitions, phonetics, and meanings |
 
+## 💻 How to Run Locally
+- You can run this project on your local machine in seconds.
+- Download or clone the project.
+- Open the index.html file in any web browser.That's it — no server needed!
 
 ## 📌 Future Improvements
 - Add synonyms & antonyms
